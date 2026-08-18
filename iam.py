@@ -1,8 +1,8 @@
 # cook your dish here
 # cook your dish here
 import re
-value_hint= r"\s*Action|Resources\s*=\s*"\*""
-value_hint= r"\s*Action|Resources\s*:\s*"\*""
+value_hint1= r'\s*(Action|Resource)\s*(=|:)\s*"\*"'
+value_hint2= r'\s*(Action|Resource)\s*(=|:)\s*"\*"'
 
 patch = "@@ -0,0 +1,16 @@\n+resource \"aws_iam_policy\" \"sample_policy\" {\n+  name        = \"sample-pr-policy\"\n+  description = \"Sample IAM policy for security gate testing\"\n+\n+  policy = jsonencode({\n+    Version = \"2012-10-17\"\n+\n+    Statement = [\n+      {\n+        Effect   = \"Allow\"\n+        Action   = \"*\"\n+        Resource = \"*\"\n+      }\n+    ]\n+  })\n+}"
 print(patch.splitlines())
